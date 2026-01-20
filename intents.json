@@ -1,19 +1,132 @@
 {
   "intents": [
+
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey", "Good morning"],
-      "responses": ["Hello!", "Hi there!", "How can I help you?"]
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening", "Is anyone there?", "Hi bot"],
+      "responses": ["Hello!", "Hi there!", "Hey 👋 How can I help you?", "Good to see you!"]
     },
+
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "See you", "Goodbye"],
-      "responses": ["Goodbye!", "Take care!"]
+      "patterns": ["Bye", "See you", "Goodbye", "I am leaving", "Catch you later"],
+      "responses": ["Goodbye!", "Take care!", "See you soon!", "Have a great day!"]
     },
+
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "Great help"],
-      "responses": ["You're welcome!", "Happy to help 😊"]
+      "patterns": ["Thanks", "Thank you", "Thanks a lot", "Great help", "Appreciate it"],
+      "responses": ["You're welcome!", "Happy to help 😊", "Anytime!", "Glad I could help!"]
+    },
+
+    {
+      "tag": "about_bot",
+      "patterns": ["Who are you?", "What can you do?", "Tell me about yourself", "Are you a human?"],
+      "responses": ["I am a virtual chatbot designed to assist you.", "I can answer questions and help you with information."]
+    },
+
+    {
+      "tag": "help",
+      "patterns": ["Help me", "I need help", "Can you help?", "Support"],
+      "responses": ["Sure! Tell me what you need help with.", "I'm here to help you."]
+    },
+
+    {
+      "tag": "bot_creator",
+      "patterns": ["Who made you?", "Who created you?", "Who is your developer?"],
+      "responses": ["I was created by a developer using AI and machine learning technologies."]
+    },
+
+    {
+      "tag": "age",
+      "patterns": ["How old are you?", "What is your age?"],
+      "responses": ["I don’t have an age like humans. I exist in code!"]
+    },
+
+    {
+      "tag": "working_hours",
+      "patterns": ["Are you available?", "When do you work?", "Working hours"],
+      "responses": ["I am available 24/7 to assist you."]
+    },
+
+    {
+      "tag": "location",
+      "patterns": ["Where are you located?", "Where do you live?"],
+      "responses": ["I exist in the cloud and can help from anywhere!"]
+    },
+
+    {
+      "tag": "services",
+      "patterns": ["What services do you provide?", "What can you help with?", "Your services"],
+      "responses": ["I can answer questions, provide information, and assist with problem-solving."]
+    },
+
+    {
+      "tag": "medical_disclaimer",
+      "patterns": ["Medical advice", "Can you treat me?", "Doctor help"],
+      "responses": ["I can provide general medical information, but please consult a healthcare professional for medical advice."]
+    },
+
+    {
+      "tag": "mental_health_support",
+      "patterns": ["I feel sad", "I am stressed", "Feeling anxious", "Depressed"],
+      "responses": ["I'm sorry you're feeling this way. You’re not alone. Please consider reaching out to a trusted person or professional."]
+    },
+
+    {
+      "tag": "weather",
+      "patterns": ["What is the weather?", "Is it raining?", "Weather today"],
+      "responses": ["I currently don’t have live weather access, but I can help explain weather concepts."]
+    },
+
+    {
+      "tag": "jokes",
+      "patterns": ["Tell me a joke", "Make me laugh", "Funny joke"],
+      "responses": ["Why don’t programmers like nature? Too many bugs 😄"]
+    },
+
+    {
+      "tag": "motivation",
+      "patterns": ["Motivate me", "I feel tired", "Need inspiration"],
+      "responses": ["Believe in yourself. Every step you take moves you forward 💪"]
+    },
+
+    {
+      "tag": "career_guidance",
+      "patterns": ["Career advice", "What job should I do?", "Career help"],
+      "responses": ["Tell me about your interests and skills, and I’ll try to guide you."]
+    },
+
+    {
+      "tag": "data_analytics",
+      "patterns": ["What is data analytics?", "Explain data analyst", "Data analysis role"],
+      "responses": ["Data analytics involves analyzing data to find insights that support decision-making."]
+    },
+
+    {
+      "tag": "programming_help",
+      "patterns": ["Help with Python", "Coding help", "Programming issue"],
+      "responses": ["Sure! Tell me what programming problem you are facing."]
+    },
+
+    {
+      "tag": "ai_information",
+      "patterns": ["What is AI?", "Explain artificial intelligence", "AI meaning"],
+      "responses": ["Artificial Intelligence is the simulation of human intelligence in machines."]
+    },
+
+    {
+      "tag": "chatbot_definition",
+      "patterns": ["What is a chatbot?", "Explain chatbot"],
+      "responses": ["A chatbot is a software application that can simulate human conversation."]
+    },
+
+    {
+      "tag": "fallback",
+      "patterns": ["", "???", "I don’t know", "Random text"],
+      "responses": ["Sorry, I didn’t understand that. Can you please rephrase?"]
     }
+
   ]
 }
+

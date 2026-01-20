@@ -7,10 +7,10 @@ model = pickle.load(open("model.pkl", "rb"))
 vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
 intents = json.load(open("intents.json"))
 
-@app.route("/chat", methods=["GET", "POST"])
+@app.route("/chatbot", methods=["GET", "POST"])
 def chat():
     if request.method == "GET":
-        return "Chatbot API is running. Use POST request."
+        return render_template("index.html")
 
     user_input = request.json["message"]
     X = vectorizer.transform([user_input])
@@ -24,7 +24,7 @@ def chat():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("start.html")
 
 
 

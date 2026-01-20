@@ -7,7 +7,7 @@ function sendMessage() {
     chatBox.innerHTML += `<div class="user">You: ${userInput}</div>`;
     document.getElementById("user-input").value = "";
 
-    fetch("/chat", {
+    fetch("/chatbot", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
