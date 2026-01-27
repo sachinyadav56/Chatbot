@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import pickle, json, random
 from deep_translator import GoogleTranslator
+from langdetect import detect, DetectorFactory
+
+
+
 
 app = Flask(__name__)
 
@@ -13,24 +17,20 @@ def chat():
     if request.method == "GET":
         return render_template("index.html")
 
-    user_input = request.json["message"]
+    data = request.get_json()
+    user_input = data.get("message", "")
 
-# Translate input to English
     translated_input = GoogleTranslator(source='auto', target='en').translate(user_input)
 
-# Predict intent
     X = vectorizer.transform([translated_input])
     tag = model.predict(X)[0]
 
     for intent in intents["intents"]:
         if intent["tag"] == tag:
             reply = random.choice(intent["responses"])
-            
-            # Translate reply back to user’s language
-            translated_reply = GoogleTranslator(source='en', target='auto').translate(reply)
-            return jsonify({"reply": translated_reply})
+            return jsonify({"reply": reply})
 
-    return jsonify({"reply": GoogleTranslator(source='en', target='auto').translate("I don't understand")})
+    return jsonify({"reply": "I don't understand"})
 
 @app.route("/")
 def home():
@@ -38,9 +38,3 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-
-
