@@ -1,5 +1,3 @@
-
-
 from flask import Flask, render_template, request, jsonify
 import pickle, json, random
 from deep_translator import GoogleTranslator
@@ -44,10 +42,5 @@ if __name__ == "__main__":
 
 
 
-@app.route("/")
-def home():
-    return render_template("start.html")
 
 
-if __name__ == "__main__":
-    app.run(debug=True)

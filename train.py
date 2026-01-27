@@ -1,7 +1,48 @@
+# import json
+# import nltk
+# import numpy as np
+# import pickle
+
+# from nltk.stem import WordNetLemmatizer
+# from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.linear_model import LogisticRegression
+
+# nltk.download('punkt')
+# nltk.download('wordnet')
+
+# lemmatizer = WordNetLemmatizer()
+
+# # Load data
+# with open("intents.json") as file:
+#     data = json.load(file)
+
+# sentences = []
+# labels = []
+
+# for intent in data["intents"]:
+#     for pattern in intent["patterns"]:
+#         sentences.append(pattern)
+#         labels.append(intent["tag"])
+
+# # Convert text to numbers
+# vectorizer = CountVectorizer()
+# X = vectorizer.fit_transform(sentences)
+
+# # Train model
+# model = LogisticRegression()
+# model.fit(X, labels)
+
+# # Save model
+# pickle.dump(model, open("model.pkl", "wb"))
+# pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
+
+# print("Model trained and saved successfully!")
+
+
 import json
 import nltk
-import numpy as np
 import pickle
+import re
 
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer
@@ -12,7 +53,15 @@ nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-# Load data
+# Clean + lemmatize function
+def preprocess(text):
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z ]', '', text)
+    tokens = nltk.word_tokenize(text)
+    tokens = [lemmatizer.lemmatize(word) for word in tokens]
+    return " ".join(tokens)
+
+# Load intents
 with open("intents.json") as file:
     data = json.load(file)
 
@@ -21,19 +70,20 @@ labels = []
 
 for intent in data["intents"]:
     for pattern in intent["patterns"]:
-        sentences.append(pattern)
+        sentences.append(preprocess(pattern))
         labels.append(intent["tag"])
 
-# Convert text to numbers
+# Vectorization
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(sentences)
 
 # Train model
-model = LogisticRegression()
+model = LogisticRegression(max_iter=1000)
 model.fit(X, labels)
 
-# Save model
+# Save
 pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
 
-print("Model trained and saved successfully!")
+print("Model trained with preprocessing & saved successfully!")
+

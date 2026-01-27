@@ -45,7 +45,7 @@
       ],
       "responses": [
         "We’re sorry about your experience. Please describe the issue so we can take action.",
-        "Thank you for reporting this. Your feedback is important to us."
+        "Thank you for reporting this. Your feedback is important to us. I will take action"
       ]
     },
 
@@ -60,7 +60,7 @@
       ],
       "responses": [
         "Payment issue noted. Please confirm if the amount was deducted incorrectly.",
-        "Don’t worry, we’ll help you with this payment issue."
+        "Do not worry, we shall help you with this payment issue."
       ]
     },
 
