@@ -3,11 +3,14 @@ import pickle, json, random
 from deep_translator import GoogleTranslator
 from langdetect import detect, DetectorFactory
 
+
 app = Flask(__name__)
 
 model = pickle.load(open("model.pkl", "rb"))
 vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
 intents = json.load(open("intents.json"))
+
+
 @app.route("/chatbot", methods=["GET", "POST"])
 def chat():
     if request.method == "GET":

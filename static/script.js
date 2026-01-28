@@ -6,9 +6,11 @@ function sendMessage() {
     let chatBox = document.getElementById("chat-box");
 
     // Show user message
-    chatBox.innerHTML += `<div class="user">You: ${escapeHTML(userInput)}</div>`;
+    chatBox.innerHTML += `<div class="message user">${escapeHTML(userInput)}</div>`;
     inputField.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
 
+    // Send to backend
     fetch("/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -16,12 +18,12 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        chatBox.innerHTML += `<div class="bot">Bot: ${escapeHTML(data.reply)}</div>`;
+        chatBox.innerHTML += `<div class="message bot">${escapeHTML(data.reply)}</div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
     })
     .catch(err => {
         console.error("Fetch error:", err);
-        chatBox.innerHTML += `<div class="bot">Bot: Server error</div>`;
+        chatBox.innerHTML += `<div class="message bot">Server error</div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
     });
 }
@@ -31,7 +33,7 @@ document.getElementById("user-input").addEventListener("keydown", function(e) {
     if (e.key === "Enter") sendMessage();
 });
 
-// Escape HTML to prevent injection
+// Escape HTML
 function escapeHTML(text) {
     return text.replace(/[&<>"']/g, function(m) {
         return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
