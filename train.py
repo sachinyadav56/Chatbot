@@ -1,4 +1,3 @@
-
 import json
 import nltk
 import pickle
@@ -13,7 +12,7 @@ nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-# Clean + lemmatize function
+# Preprocessing 
 def preprocess(text):
     text = text.lower()
     text = re.sub(r'[^a-zA-Z ]', '', text)
@@ -22,7 +21,7 @@ def preprocess(text):
     return " ".join(tokens)
 
 # Load intents
-with open("intents.json") as file:
+with open("intents.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 sentences = []
@@ -33,17 +32,13 @@ for intent in data["intents"]:
         sentences.append(preprocess(pattern))
         labels.append(intent["tag"])
 
-# Vectorization
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(sentences)
 
-# Train model
 model = LogisticRegression(max_iter=1000)
 model.fit(X, labels)
 
-# Save
 pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
 
-print("Model trained with preprocessing & saved successfully!")
-
+print(" Model trained and saved successfully!")

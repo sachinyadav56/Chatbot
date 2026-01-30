@@ -4,52 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Chatbot</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: #f4f6f8;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            animation: gradientMove 6s ease infinite;
         }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .container {
+            width: 90%;
+            max-width: 420px;
+            padding: 40px 30px;
             text-align: center;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            color: #fff;
         }
+
+        /* 🤖 Chatbot Icon */
+        .bot-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: floatBot 2.5s ease-in-out infinite;
+        }
+
+        @keyframes floatBot {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
+        }
+
         h1 {
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 26px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
+
+        p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+        }
+
         button {
-            padding: 12px 30px;
+            width: 100%;
+            padding: 14px;
             font-size: 16px;
             border: none;
-            border-radius: 6px;
-            background-color: #007bff;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
         button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 480px) {
+            .bot-icon {
+                font-size: 60px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Hi, Welcome to Virtual Chat Bot</h1>
-        <p>Start your communication with our assistant</p>
-        <button onclick="startChat()">Start</button>
+        <div class="bot-icon">🤖</div>
+        <h1>Welcome to Virtual Chatbot</h1>
+        <p>Start your smart conversation with our chatbot assistant</p>
+        <button onclick="startChat()">Start Chat</button>
     </div>
 
-<script>
-    function startChat() {
-        window.location.href = "http://127.0.0.1:5000/chatbot";
-    }
-</script>
+    <script>
+        function startChat() {
+            window.location.href = "http://127.0.0.1:5000/chatbot";
+        }
+    </script>
 
 </body>
 </html>

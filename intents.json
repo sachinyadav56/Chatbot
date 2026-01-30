@@ -1,10 +1,12 @@
 {
   "intents": [
-
     {
       "tag": "greeting",
       "patterns": ["Hi", "Hello", "Hey", "Hi support", "Hello team"],
-      "responses": ["Hello  Welcome to Customer Support. How can I help you today?", "Hi! How can I assist you with your ride?"]
+      "responses": [
+        "Hello! Welcome to Customer Support. How can I help you today?",
+        "Hi! How can I assist you?"
+      ]
     },
 
     {
@@ -31,7 +33,7 @@
       ],
       "responses": [
         "We are sorry for the delay. Please share your Ride ID for assistance.",
-        "Thanks for informing us. We’ll look into the delay immediately."
+        "Thanks for informing us. We shall look into the delay immediately."
       ]
     },
 
@@ -45,7 +47,7 @@
       ],
       "responses": [
         "We’re sorry about your experience. Please describe the issue so we can take action.",
-        "Thank you for reporting this. Your feedback is important to us. I will take action"
+        "Thank you for reporting this. Your feedback is important to us."
       ]
     },
 
@@ -60,7 +62,7 @@
       ],
       "responses": [
         "Payment issue noted. Please confirm if the amount was deducted incorrectly.",
-        "Do not worry, we shall help you with this payment issue."
+        "Do not worry, we will help you resolve this payment issue."
       ]
     },
 
@@ -73,7 +75,7 @@
         "Refund chahiye"
       ],
       "responses": [
-        "Your refund request has been registered. Refunds are processed within 3–5 working days.",
+        "Your refund request has been registered. It will be processed within 3–5 working days.",
         "We’ve received your refund request. Please wait for confirmation."
       ]
     },
@@ -88,7 +90,7 @@
       ],
       "responses": [
         "We understand your concern. Please share the Ride ID to review the fare.",
-        "Thank you for bringing this to our attention. We’ll check the fare details."
+        "We’ll check the fare details and update you shortly."
       ]
     },
 
@@ -101,8 +103,8 @@
         "Login issue"
       ],
       "responses": [
-        "Please try restarting the app or updating it to the latest version.",
-        "We recommend reinstalling the app if the issue persists."
+        "Please try restarting or updating the app.",
+        "Reinstalling the app may resolve the issue."
       ]
     },
 
@@ -115,8 +117,8 @@
         "Unsafe ride"
       ],
       "responses": [
-        "Your safety is our priority. Please contact emergency support immediately or share your Ride ID.",
-        "We take safety very seriously. Our team will assist you right away."
+        "Your safety is our priority. Please contact emergency support immediately.",
+        "Our team will assist you right away."
       ]
     },
 
@@ -129,7 +131,7 @@
         "Connect to agent"
       ],
       "responses": [
-        "You are being connected to our support team. Please wait a moment.",
+        "You are being connected to our support team. Please wait.",
         "Our customer support executive will assist you shortly."
       ]
     },
@@ -137,23 +139,20 @@
     {
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "Thanks support", "Appreciate it"],
-      "responses": ["You are welcome ", "Happy to help!", "Anytime!"]
+      "responses": [
+        "You are welcome!",
+        "Happy to help!",
+        "Anytime!"
+      ]
     },
 
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "Goodbye", "Exit", "Close chat"],
-      "responses": ["Thank you for contacting support. Have a safe ride 🚕", "Goodbye! Take care."]
-    },
-
-    {
-      "tag": "fallback",
-      "patterns": ["", "???", "Random text"],
+      "patterns": ["Close chat", "Bye"],
       "responses": [
-        "Sorry, I did not understand that. Could you please rephrase?",
-        "I am here to help. Please tell me your issue related to the ride."
+        "Thank you for contacting support. Have a safe ride!",
+        "Goodbye! Take care."
       ]
     }
-
   ]
 }
