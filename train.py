@@ -2,38 +2,51 @@ import json
 import nltk
 import numpy as np
 import pickle
+import re
 
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 
+# Download required NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-# Load data
-with open("intents.json") as file:
+# -------- Text preprocessing function --------
+def clean_text(text):
+    text = text.lower()                     # lowercase
+    text = re.sub(r"[^a-zA-Z\s]", "", text) # remove symbols
+    tokens = word_tokenize(text)            # tokenize
+    tokens = [lemmatizer.lemmatize(word) for word in tokens]
+    return " ".join(tokens)
+
+# Load intents
+with open("intents.json", encoding="utf-8") as file:
     data = json.load(file)
 
 sentences = []
 labels = []
 
+# Prepare training data
 for intent in data["intents"]:
     for pattern in intent["patterns"]:
-        sentences.append(pattern)
+        cleaned_pattern = clean_text(pattern)
+        sentences.append(cleaned_pattern)
         labels.append(intent["tag"])
 
-# Convert text to numbers
+# Convert text to vectors
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(sentences)
 
-# Train model
-model = LogisticRegression()
+# Train ML model
+model = LogisticRegression(max_iter=1000)
 model.fit(X, labels)
 
-# Save model
+# Save trained model and vectorizer
 pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
 
-print("Model trained and saved successfully!")
+print(" Model trained and saved successfully!")

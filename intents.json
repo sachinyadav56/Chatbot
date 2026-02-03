@@ -127,7 +127,6 @@
       "patterns": [
         "Talk to human",
         "Customer care number",
-        "c",
         "Connect to agent"
       ],
       "responses": [

@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, jsonify
 import pickle, json, random
 from deep_translator import GoogleTranslator
@@ -22,7 +21,7 @@ def chat():
 
     # language detection
     try:
-        if len(user_input) < 15:
+        if len(user_input) < 10:
             user_lang = "en"   
         else:
             user_lang = detect(user_input)
