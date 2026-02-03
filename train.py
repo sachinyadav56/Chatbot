@@ -9,17 +9,17 @@ from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 
-# Download required NLTK data
+# Download NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-# -------- Text preprocessing function --------
+# Text  function
 def clean_text(text):
-    text = text.lower()                     # lowercase
-    text = re.sub(r"[^a-zA-Z\s]", "", text) # remove symbols
-    tokens = word_tokenize(text)            # tokenize
+    text = text.lower()                     
+    text = re.sub(r"[^a-zA-Z\s]", "", text) 
+    tokens = word_tokenize(text)           
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return " ".join(tokens)
 

@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 model = pickle.load(open("model.pkl", "rb"))
 vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
-intents = json.load(open("intents.json"))
+intents = json.load(open("intents.json", encoding="utf-8"))
 
 @app.route("/chatbot", methods=["GET", "POST"])
 def chat():
