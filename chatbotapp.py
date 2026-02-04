@@ -4,7 +4,7 @@ from deep_translator import GoogleTranslator
 from langdetect import detect, DetectorFactory, LangDetectException
 
 DetectorFactory.seed = 0  
-
+ 
 app = Flask(__name__)
 
 model = pickle.load(open("model.pkl", "rb"))
@@ -52,6 +52,8 @@ def chat():
 @app.route("/")
 def home():
     return render_template("start.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
